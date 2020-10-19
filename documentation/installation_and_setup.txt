@@ -1,0 +1,63 @@
+					@@@@ API server for Rooms booking system Installation Guide @@@@@
+
+
+#################################################
+	Pre-Installation Requirements:
+#################################################
+
+1, Hardware Requirements:
+		A decent computer configuration such as min. four core processor, 4 GB RAM, 350 GB HDD with Ubuntu OS (recommended) or Windows 8 and above
+
+2, Software Requirements:
+		Python 3.6 , Virtualenv, pip (latest), Postman, Google Chrome
+
+3, Database Requirements:
+		MySql Community server 8.0 or above (recommended) with Mysql workbench/php myadmin
+
+
+
+######################################################################
+	Please follow below steps to run the API service:
+######################################################################
+
+(please run the below commands in command prompt/terminal one by one)
+
+1, Create virtual environment at outside of project folder
+		->  mkdir ENV36
+		->  virtualenv --python=<path of python3.6 >  ENV36/
+
+2, Activate the virtual environment.
+		->  ENV36/Scripts/activate ( if windows) (or) Source ENV36/bin/activate (if ubuntu)
+
+3, Ensure python version, default pip packages:
+		-> python (or) pip list
+
+4, Install the Project requirements:
+	Go to backend_server directory 
+		->  pip install -r requirements.txt
+
+5, Ensure the installed pip packages with requirements.txt:
+		-> pip list
+
+6, Add/Change the database details, log directory, other one time configuration details in backend_server/baseproject/config_util.py
+
+7, Adding data to database:
+	 # If plan to use old mysql data dump, Please import sql dump using MySQL Workbench/PhP myadmin from database_backup/Dump20201018.sql
+
+	 							(or)
+
+	 # If plan to use new data, Please run below commands in command prompt/ terminal at backend_server directory level
+	 			-> python manage.py makemigrations
+	 			-> python manage.py migrate
+	 			-> python manage.py createsuperuser
+
+8, Run the server
+		-> python manage.py runserver 					(default port 8000)
+					(or)
+		-> python manage.py runserver 0.0.0.0:8001		(user defined port 8001)
+
+
+9, Ensure the server running status by checking log files in log directory (which is mention in config_util.py) and in browser (http://localhost:8000/admin)
+
+
+
